@@ -1,0 +1,55 @@
+# ---------------------------------------------- #
+# Specifies the Modbus address of this PLC. 
+# Hexadecimal, maximum one byte
+# ---------------------------------------------- #
+[address]
+address = 0x00
+
+# ---------------------------------------------- #
+# Specifies the function(s) that this PLC handles.
+# This is used for loading GUI control elements.
+# If a function is specified here, then it must
+# have a py class within the GUI directory that has
+# the same filename specified in [class name]. 
+# [function name] can be anything.
+# Format: [function name] = [class name]
+# ---------------------------------------------- #
+[plc function]
+func1 = Turbine
+
+# ---------------------------------------------- #
+# Specifies the physical devices connected to this
+# PLC, and which drivers they use. The [device name]
+# can be anything. [device driver] must be the same
+# as a py class within the PLC folder. Refer to the
+# documentation for more information on device 
+# drivers. Format: [device name] = [device driver]
+# ---------------------------------------------- #
+[device drivers]
+dev0 = motorDriver
+dev1 = speedSensDriver
+
+# ---------------------------------------------- #
+# Specifies the modbus parameters and addresses 
+# that this PLC uses. Each register is unique to
+# each PLC address space, so these do not need to 
+# be deconflicted accross PLCs. [param name] is a
+# reference and can be anything. [param address] is
+# the register address in modbus. It must be an 
+# integer, from 0 - 8.
+# Format: [param name] = [param address]
+[parameter addresses]
+targetrpm = 0
+pwm = 1
+rpm = 2
+
+# ---------------------------------------------- #
+# Specifies the details for the modbus server,
+# which is run on the supervisor Pi. Requires
+# hostname and port 
+# Format: hostname = [hostname]
+#         port = [port]
+# ---------------------------------------------- #
+[server]
+hostname = supervisor.local
+port = 5020
